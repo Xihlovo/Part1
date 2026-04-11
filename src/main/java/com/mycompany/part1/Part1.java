@@ -10,11 +10,10 @@ package com.mycompany.part1;
  */
 public class Part1 {
 
-     public static void main(String[] args) {
-        Login login = new Login();
-        
-        System.out.println("Testing: " + login.checkUserName("kyl_1"));
-    }
+    public static void main(String[] args) {
+
+}
+    
 }
 
     
