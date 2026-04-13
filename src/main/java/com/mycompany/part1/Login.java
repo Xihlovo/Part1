@@ -9,6 +9,7 @@ package com.mycompany.part1;
  * @author nkhwa
  */
 public class Login {
+    //Declarations
     private String name;
     private String surname;
     private String username;
@@ -33,7 +34,7 @@ public class Login {
         return false; 
     }
     
-    // checking to see if password has any numbers (FIXED LINE)
+    // checking to see if password has any numbers 
     if (!password.matches(".*\\d.*")) {  // Changed from .contains to .matches
         return false;
     }
@@ -72,7 +73,7 @@ public class Login {
          this.password = password;
          this.phone = phone;
     
-        return "User succesfully Registered";
+        return "User registered successfully.";
     }
     public boolean loginUser(String username,String password) {
          if (username.equals(this.username) && password.equals(this.password)) {
