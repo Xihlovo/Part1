@@ -46,8 +46,12 @@ public class Message {
     
     String[] words = messageText.trim().split("\\s+");
     
-    String firstWord = words[0];
-    String lastWord = words[words.length - 1];
+      // Get first word and remove any non-letters 
+    String firstWord = words[0].replaceAll("[^a-zA-Z]", "").toUpperCase();
+    
+    // Get last word and remove any non-letters
+    String lastWord = words[words.length - 1].replaceAll("[^a-zA-Z]", "").toUpperCase();
+    
     
     // Combine them
     String hash = firstTwo + ":" + messageCount + ":" + firstWord + lastWord;
