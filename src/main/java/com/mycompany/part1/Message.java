@@ -31,7 +31,7 @@ public class Message {
         
         this.status = "Pending";
         
-        this.messageHash = createMessageHash();
+      this.messageHash = createMessageHash();
     }
     
     // method to generate 10-digit ID
@@ -40,5 +40,51 @@ public class Message {
         // Generate a number between 1,000,000,000 and 9,999,999,999
         long randomNumber = 1_000_000_000L + (long)(rand.nextDouble() * 9_000_000_000L);
         return String.valueOf(randomNumber);
+    }
+    public String createMessageHash() {
+    String firstTwo = messageID.substring(0, 2);
+    
+    String[] words = messageText.trim().split("\\s+");
+    
+    String firstWord = words[0];
+    String lastWord = words[words.length - 1];
+    
+    // Combine them
+    String hash = firstTwo + ":" + messageCount + ":" + firstWord + lastWord;
+    
+    return hash.toUpperCase();
+}
+    
+        //Check if message ID is valid )
+    public boolean checkMessageID() {
+        if (messageID == null) {
+            return false;
+        }
+        return messageID.length() == 10 && messageID.matches("\\d{10}");
+    }
+    
+    //Check if recipient cell number is valid
+    public String checkRecipientCell() {
+        if (recipient != null && recipient.matches("^\\+27[0-9]{9,10}$")) {
+            return "Cell phone number successfully captured.";
+        } else {
+            return "Cell phone number is incorrectly formatted or does not contain an international code. Please correct the number and try again.";
+        }
+    }
+    
+        // Getter methods
+    public String getMessageID() { return messageID; }
+    public int getMessageCount() { return messageCount; }
+    public String getRecipient() { return recipient; }
+    public String getMessageText() { return messageText; }
+    public String getMessageHash() { return messageHash; }
+    public String getStatus() { return status; }
+    
+    // Setter for status so we can update it when user chooses
+    public void setStatus(String status) { this.status = status; }
+    
+    
+    public static int returnTotalMessages() { 
+        return totalMessagesSent; 
     }
 }
