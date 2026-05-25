@@ -74,6 +74,7 @@ public class Message {
             return "Press 0 to delete the message.";
         case 3:
             this.status = "Stored";
+             storeMessageToFile();
             return "Message successfully stored.";
         default:
             return "Invalid option. Message not processed.";
@@ -112,4 +113,25 @@ public class Message {
     public static int returnTotalMessages() { 
         return totalMessagesSent; 
     }
+        public void storeMessageToFile() {
+    try {
+        String json = "{";
+        json += "\"messageID\":\"" + messageID + "\",";
+        json += "\"messageCount\":" + messageCount + ",";
+        json += "\"recipient\":\"" + recipient + "\",";
+        json += "\"messageText\":\"" + messageText.replace("\"", "\\\"") + "\",";
+        json += "\"messageHash\":\"" + messageHash + "\",";
+        json += "\"status\":\"" + status + "\"";
+        json += "}";
+        
+        // Write to file
+        java.io.FileWriter writer = new java.io.FileWriter("stored_messages.json", true);
+        writer.write(json + "\n");
+        writer.close();
+        
+        System.out.println("Message stored to file.");
+    } catch (java.io.IOException e) {
+        System.out.println("Error storing message: " + e.getMessage());
+    }
 }
+    }
