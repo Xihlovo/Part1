@@ -113,6 +113,9 @@ public class Message {
     public static int returnTotalMessages() { 
         return totalMessagesSent; 
     }
+    public static void resetTotalMessagesSent() {
+    totalMessagesSent = 0;
+}
         public void storeMessageToFile() {
     try {
         String json = "{";
