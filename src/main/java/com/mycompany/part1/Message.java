@@ -54,6 +54,31 @@ public class Message {
     
     return hash.toUpperCase();
 }
+    public String sentMessage(java.util.Scanner scanner) {
+    System.out.println("\n--- Message Options ---");
+    System.out.println("1. Send Message");
+    System.out.println("2. Disregard Message");
+    System.out.println("3. Store Message to send later");
+    System.out.print("Choose an option: ");
+    
+    int choice = scanner.nextInt();
+    scanner.nextLine();
+    
+    switch (choice) {
+        case 1:
+            this.status = "Sent";
+            totalMessagesSent++;
+            return "Message successfully sent.";
+        case 2:
+            this.status = "Disregarded";
+            return "Press 0 to delete the message.";
+        case 3:
+            this.status = "Stored";
+            return "Message successfully stored.";
+        default:
+            return "Invalid option. Message not processed.";
+    }
+}
     
         //Check if message ID is valid )
     public boolean checkMessageID() {
