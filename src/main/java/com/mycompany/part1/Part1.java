@@ -11,6 +11,14 @@ import java.util.ArrayList;
  * @author nkhwa
  */
 public class Part1 {
+    
+    //Arrays 
+    private static ArrayList<Message> sentMessages = new ArrayList<>();
+    private static ArrayList<Message> disregardedMessages = new ArrayList<>();
+    private static ArrayList<Message> storedMessages = new ArrayList<>();
+    private static ArrayList<String> messageHashes = new ArrayList<>();
+    private static ArrayList<String> messageIDs = new ArrayList<>();
+    
 
     public static void main(String[] args) {
         Login user = new Login();
